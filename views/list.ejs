@@ -1,0 +1,30 @@
+<%- include("header") -%>
+	<img id="logo" src="Images/HJ_logo.png">
+	<!-- <form action="/work" method="get">
+		<button type="submit">Work List</button>
+	</form> -->
+
+	<div class="box" id="heading">
+		<h1> <%= ListTitle %> </h1>
+	</div>
+	
+	<div class="lines" id="l1"></div>
+	<div class="lines" id="l2"></div>
+
+	<div class="box" id="content">
+		
+    	   <% for(var i=0; i<newListItems.length; i++){  %>
+    	      <div class="item">
+    	      	<input type="checkbox">
+    	   	    <p><%= newListItems[i] %></p>
+    	      </div>
+	          
+           <% } %>
+
+           <form class="item" action="/" method="post">
+                <input type="text" name="newItem" placeholder="New item" autocomplete="off">
+    	        <button type="submit" name="list" value=<%= ListTitle %>><i class="far fa-plus"></i></button>
+            </form>
+	</div>
+
+<%- include("footer") -%>
