@@ -5,6 +5,88 @@ html {
   font-family: 'helvetica neue';
 }
 
+.home-page {
+  display: none;
+}
+
+.loading-page {
+  font-family: 'Tangerine', serif;
+  font-size: 72px;
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+}
+
+nav {
+  position: absolute;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: left;
+  background-color: rgba(255, 255, 255, 0.3);
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  padding: 10px;
+}
+
+nav div {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  
+}
+
+h3 {
+  margin: 0.1vh auto;
+  background-color: #FF9F45;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 20px;
+}
+
+a {
+  text-decoration: none;
+  margin: 0.5vh auto;
+  color: black;
+}
+
+a:active {
+  color: white;
+}
+
+/*div.list-titles {
+  display: none;
+  padding-right: 10px;
+}*/
+
+/*nav > div.icons:hover {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}*/
+
+/*div.list-titles:hover {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}*/
+
+
+a:hover,
+a:focus {
+  box-shadow: 0 0.5em 0.5em -0.4em black;
+  transform: translateY(-0.25em);
+}
+
+/*nav:hover > div.list-titles {
+   display: flex;
+   flex-direction: column;
+   justify-content: space-around;
+   border-top-right-radius: 20px;
+   border-bottom-right-radius: 20px;
+}*/
+
 h1 {
   color: #fff;
   padding: 10px;
@@ -16,6 +98,10 @@ h1 {
   top: 20px;
   right: 20px;
   width: 9.4em;
+}
+
+#hamburger {
+  display: none;
 }
 
 .box {
@@ -30,6 +116,21 @@ h1 {
   background-color: #FF9F45;
   text-align: center;
   margin-bottom: 0;
+}
+
+.delete-btn {
+  color: white;
+  position: absolute;
+  top: 67px;
+  left: 60%;
+  background: none;
+  border: none;
+}
+
+.delete-btn:hover {
+  color: black;
+  box-shadow: 0 0.5em 0.5em -0.4em black;
+  transform: translateY(-0.25em);
 }
 
 .lines {
@@ -84,13 +185,13 @@ p {
   color: #00204a;
 }
 
-form {
+form.item {
   text-align: center;
   margin-left: 20px;
 }
 
-button {
-  min-height: 50px;
+button.add {
+  height: 50px;
   width: 50px;
   border-radius: 100%;
   border-color: transparent;
@@ -99,6 +200,11 @@ button {
   font-size: 30px;
   padding-bottom: 6px;
   border-width: 0;
+}
+
+button#newList {
+  width: 30px;
+  height: 30px;
 }
 
 input[type="text"] {
@@ -111,6 +217,12 @@ input[type="text"] {
   font-weight: 200;
   width: 313px;
   margin-bottom: 10px;
+}
+
+input#newListName {
+  width: 110px;
+  height: 30px;
+  font-size: 15px;
 }
 
 input[type="text"]:focus {
@@ -129,6 +241,20 @@ footer {
   text-align: center;
 }
 
+.copyright {
+  position: relative;
+  top: 6px;
+}
+
+.nav-mobile {
+  display: block;
+  position: static;
+  text-align: center;
+  width: 90vw;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+}
+
 
 @media screen and (max-device-width: 500px){
 
@@ -136,6 +262,30 @@ footer {
     position: static;
     width: 7em;
   }
+
+  #hamburger {
+    display: inline;
+    position: absolute;
+    background: none;
+    border: none;
+    color: #FF9F45;
+    top: 30px;
+    right: 30px;
+  }
+
+  nav {
+    display: none;
+  } 
+
+  nav form {
+    text-align: center;
+  } 
+
+.delete-btn {
+  position: relative;
+  top: 0;
+  left: 0;
+}
 
   .box {
     margin: 10px auto;

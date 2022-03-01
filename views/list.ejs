@@ -1,30 +1,89 @@
 <%- include("header") -%>
+<div class="loading-page">
+	<h1>Listify</h1>
+</div>
+
+
+<div class="home-page">
+
 	<img id="logo" src="Images/HJ_logo.png">
-	<!-- <form action="/work" method="get">
-		<button type="submit">Work List</button>
-	</form> -->
+	<button id="hamburger" onclick="fun();"><span class="material-icons-outlined">menu</span></button>
+	
+
+	<nav>
+<!-- 		<div class="icons"> -->
+			<!-- <a href="/"><span class="material-icons-outlined">fact_check</span></a>
+			<a href="/work"><span class="material-icons-outlined">maps_home_work</span></a>
+			<a href="/grocery"><span class="material-icons-outlined">storefront</span></a>
+			<a href="/shopping"><span class="material-icons-outlined">shopping_bag</span></a> -->
+			<!-- <form action="/" method="get">
+			    <button id="i1" class="nav_btn" type="submit">TodoList<span class="material-icons-outlined">fact_check</span></button>
+		    </form> -->
+	        <!-- <form action="/work" method="get">
+		        <button id="i2" class="nav_btn" type="submit">Work List<span class="material-icons-outlined">maps_home_work</span></button>
+	        </form> -->
+	        <!-- <form action="/grocery" method="get">
+	    	    <button id="i3" class="nav_btn" type="submit">Grocery List<span class="material-icons-outlined">storefront</span></button>
+	        </form> -->
+	        <!-- <form action="/shopping" method="get">
+	    	    <button id="i4" class="nav_btn" type="submit">Shopping List<span class="material-icons-outlined">shopping_bag</span></button>
+	        </form> -->
+
+	        <h3>Available Lists</h3>
+	        <a href="/"><h4>Todolist</h4></a>
+
+	        <% navLists.forEach(function(list){ %>
+	            <% if(list.name!= "Favicon.ico"){ %>
+	                <a href="/<%= list.name %>"><h4><%=list.name%></h4></a>
+	            <% } %>
+	        <% }); %>
+
+	        <form action="/addNewList" method="post">
+	        	<input id="newListName" type="text" name="newList" placeholder="Create new List" autocomplete="off">
+	            <button class="add" id="newList" type="submit">+</button>
+	        </form> 
+
+	<!-- 	</div> -->
+<!-- 
+		<div class="list-titles">
+			<h3>TodoList</h3>
+			<h3>Work List</h3>
+			<h3>Grocery List</h3>
+			<h3>Shopping List</h3>
+		</div> -->
+
+	</nav>
+	
 
 	<div class="box" id="heading">
-		<h1> <%= ListTitle %> </h1>
+		<form action="/deleteList" method="post">
+			<h1> <%= ListTitle %> </h1>
+			<input type="hidden" name="listName" value="<%= ListTitle %>"></input>
+		    <button type="submit" class="delete-btn" title="Delete List"><span class="material-icons-outlined">delete_forever</span></button>
+		</form>
+		
 	</div>
 	
 	<div class="lines" id="l1"></div>
 	<div class="lines" id="l2"></div>
 
 	<div class="box" id="content">
-		
-    	   <% for(var i=0; i<newListItems.length; i++){  %>
-    	      <div class="item">
-    	      	<input type="checkbox">
-    	   	    <p><%= newListItems[i] %></p>
-    	      </div>
-	          
-           <% } %>
+
+		<% newListItems.forEach(function(item){ %> 
+		    <form action="/delete" method="post">
+		        <div class="item">
+		    		<input type="checkbox" name="checkbox" value=<%= item._id %> onChange="this.form.submit()" >
+    	   	        <p><%= item.name %></p>
+    	        </div>
+    	        <input type="hidden" name="listName" value="<%= ListTitle %>"></input>
+    	    </form>	
+
+	    <% }); %>
 
            <form class="item" action="/" method="post">
                 <input type="text" name="newItem" placeholder="New item" autocomplete="off">
-    	        <button type="submit" name="list" value=<%= ListTitle %>><i class="far fa-plus"></i></button>
+    	        <button class="add" type="submit" name="list" value=<%= ListTitle %>><i class="far fa-plus"></i></button>
             </form>
 	</div>
-
+</div>
 <%- include("footer") -%>
