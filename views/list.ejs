@@ -32,11 +32,15 @@
 	        <h3>Available Lists</h3>
 	        <a href="/"><h4>Todolist</h4></a>
 
-	        <% navLists.forEach(function(list){ %>
-	            <% if(list.name!= "Favicon.ico"){ %>
-	                <a href="/<%= list.name %>"><h4><%=list.name%></h4></a>
-	            <% } %>
-	        <% }); %>
+	        <% if(navLists!=null){  %>
+	               <% navLists.forEach(function(list){ %>
+	               <% if(list.name != "Favicon.ico") { %>
+	                    <a href="/<%= list.name %>"><h4><%=list.name%></h4></a>
+	               <% } %>
+	                <% }); %>
+	        <% } %>
+
+	        
 
 	        <form action="/addNewList" method="post">
 	        	<input id="newListName" type="text" name="newList" placeholder="Create new List" autocomplete="off">
